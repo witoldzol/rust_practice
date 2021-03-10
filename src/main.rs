@@ -85,9 +85,11 @@ mod test {
         let sum_5 = sum_vector(&vec![1,2,3,0,-1]);
         let sum_99 = sum_vector(&vec![-100,0,199]);
         let sum_minus_10 = sum_vector(&vec![-100,0,90]);
+        let sum_none = sum_vector(&vec![]);
 
         assert_eq!(sum_5, 5 );
         assert_eq!(sum_99, 99 );
         assert_eq!(sum_minus_10, -10 );
+        assert_eq!(sum_none, 0 );
     }
 }
