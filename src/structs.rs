@@ -12,7 +12,7 @@ enum Number {
     //tuple struct
     Custom(String),
     //classic struct
-    Coord{x:i32, y:i32}
+    Coord { x: i32, y: i32 },
 }
 
 pub struct Data {
@@ -115,7 +115,7 @@ mod tests {
         assert_eq!(s.s, "YUP");
         s.print_rev();
     }
-    
+
     #[test]
     fn color() {
         let favourite: Color = Color::Red;
@@ -124,14 +124,42 @@ mod tests {
         let custom = Number::Custom("one pierdyliard".to_string());
 
         match favourite {
-           Color::Red => println!("its a red color"),
+            Color::Red => println!("its a red color"),
             Color::Blue => println!("blue"),
-            _ => println!("some other color")
+            _ => println!("some other color"),
         }
 
         match custom {
             Number::Custom(v) => eprintln!("v = {:?}", v),
             _ => {}
         }
+
+        if let Color::Red = favourite {
+            println!("its red")
+        }
+    }
+
+    #[test]
+    fn test_option() {
+        let mut age: Option<i32> = None;
+       age = Some(11);
+
+        assert_eq!(age.unwrap(), 11);
+
+        match age  {
+            Some(11) => println!("I'm eleven!!!"),
+            None => println!("NOTHING!"),
+            _ => println!("I'm NOT eleven")
+        }
+
+        if let Some(11) = age {
+            println!("IF LET IS FAST!");
+        }
+
+        if let Some(v) = age {
+            println!("i've passed value through = {}", v * 2);
+        }
+
+        println!("did age mutated ? {}", age.unwrap());
     }
 }
