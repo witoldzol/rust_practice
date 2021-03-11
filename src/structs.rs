@@ -4,6 +4,10 @@ pub struct Data {
    pub option: Option<i32>
 }
 
+struct StringData {
+    s: String
+}
+
 //tuple struct
 pub struct MyTuple(pub i32, pub i32);
 
@@ -33,6 +37,20 @@ impl Data {
    fn sum(&self) -> i32 {
       &self.num1 + &self.num2
    }
+}
+
+trait Tranform {
+    fn rev(&self) -> String;
+    
+    fn print_rev(&self) {
+        eprintln!("&self.rev() = {:?}", &self.rev());
+    }
+}
+
+impl Tranform for StringData {
+    fn rev(&self) -> String {
+        self.s.chars().rev().collect::<String>()
+    }
 }
 
 #[cfg(test)]
@@ -69,6 +87,14 @@ mod tests {
     fn calculator_sum() {
         assert_eq!(Calculator::add(1,2), 3);
         assert_eq!(Calculator::div(5,2), 2.0);
+    }
+
+    #[test]
+    fn trait_reverse_value() {
+       let s= StringData {s: "YUP".to_string()};
+        assert_eq!(s.rev(), "PUY");
+        assert_eq!(s.s, "YUP" );
+        s.print_rev();
     }
 }
 
