@@ -40,5 +40,18 @@ mod tests {
         data.num1 = 1;
         assert_eq!(data.sum(), 11);
     }
+    
+    #[test]
+    fn populate_struct_with_vals_from_other_struct() {
+       let s1 = Data {
+           num1: 99,
+           num2: 99,
+           option: Some(1)
+       }; 
+        
+        let s2 = Data { num1:1, ..s1 };
+        assert_eq!(s2.num2, 99);
+        assert_eq!(s2.option, Some(1));
+    }
 }
 
