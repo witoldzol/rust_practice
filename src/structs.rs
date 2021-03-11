@@ -6,8 +6,8 @@ enum Color {
 
 enum Number {
     //primitives
-    One = 1,
-    Two =2,
+    One,
+    Two,
     // struct variance
     //tuple struct
     Custom(String),
@@ -122,5 +122,16 @@ mod tests {
         //&str is a string slice  - it's immutable
         //String is a HEAP allocated string - it can me mutated (if mut set)
         let custom = Number::Custom("one pierdyliard".to_string());
+
+        match favourite {
+           Color::Red => println!("its a red color"),
+            Color::Blue => println!("blue"),
+            _ => println!("some other color")
+        }
+
+        match custom {
+            Number::Custom(v) => eprintln!("v = {:?}", v),
+            _ => {}
+        }
     }
 }
