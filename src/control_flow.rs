@@ -30,4 +30,14 @@ mod tests {
         };
         assert_eq!(result, 99);
     }
+    
+    #[test]
+    fn for_loop() {
+        let mut i = 0;
+        // .step_by(1) is DEFAULT - no need to specify
+        for x  in (0..10).step_by(1) {
+            i += 2;
+        }
+        assert_eq!(i, 20);
+    }
 }
