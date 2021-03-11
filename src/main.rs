@@ -1,5 +1,6 @@
 use std::fs::read_to_string;
 use std::{error, result};
+mod structs;
 
 type TResult<T> = result::Result<T, TError>;
 type TError = Box<dyn error::Error>;
@@ -25,7 +26,9 @@ fn read_file(path: &str) -> TResult<String> {
 }
 
 fn main() {
-    println!("Hello, world!");
+    let a = structs::Data {num1: 1, num2: 3, option: None};
+    let t = structs::MyTuple(1, 2);
+    eprintln!("tuple.1 = {:?}, tuple.2 = {:?}", t.0, t.1);
 }
 
 #[cfg(test)]
