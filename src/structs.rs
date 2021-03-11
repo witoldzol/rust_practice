@@ -10,6 +10,17 @@ pub struct MyTuple(pub i32, pub i32);
 //placehoder for common functionality(class?)
 pub struct Calculator;
 
+impl Calculator {
+    fn add(n1: i32, n2: i32)-> i32 {
+        // no Self reference because Calculator doesn't have a body to self reference
+        n1 + n2
+    }
+    fn div(n1: i32, n2: i32)-> f32 {
+        // casting
+        ( n1 / n2 ) as f32
+    }
+}
+
 //adding functions to a struct
 impl Data {
     fn new() -> Self {
@@ -52,6 +63,12 @@ mod tests {
         let s2 = Data { num1:1, ..s1 };
         assert_eq!(s2.num2, 99);
         assert_eq!(s2.option, Some(1));
+    }
+
+    #[test]
+    fn calculator_sum() {
+        assert_eq!(Calculator::add(1,2), 3);
+        assert_eq!(Calculator::div(5,2), 2.0);
     }
 }
 
